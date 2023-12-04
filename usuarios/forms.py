@@ -69,3 +69,23 @@ class CadastroForms(forms.Form):
             }
         )
     )
+
+    def clean_nome(self):  # Auto aplicado, deve ser a estrutura clean_atributo
+        nome = self.cleaned_data.get("nome")
+
+        if nome:
+            nome = nome.strip() # trim
+            if " " in nome:
+                raise forms.ValidationError("Espaços não são permitidos nesse campo!")
+            else:
+                return nome
+        
+    def clean_senha2(self):
+        senha1 = self.cleaned_data.get("senha1")
+        senha2 = self.cleaned_data.get("senha2")
+
+        if senha1 and senha2:
+            if senha1 != senha2:
+                raise forms.ValidationError("Senha não são iguais!")
+            else:
+                return senha2

@@ -1,5 +1,4 @@
-{% load static %}
-{% include 'usuarios/partials/_head.html' %}
+{% extends 'shared/base.html' %} {% load static %} {% block content %}
 <body>
     <div class="pagina-inicial">
         {% include 'partials/_header.html' %}
@@ -21,5 +20,4 @@
         </main>
     </div>
 </body>
-
-{% include 'partials/_footer.html' %}
+{% endblock %}
